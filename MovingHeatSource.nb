@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    163149,       2828]
-NotebookOptionsPosition[    161847,       2801]
-NotebookOutlinePosition[    162191,       2816]
-CellTagsIndexPosition[    162148,       2813]
+NotebookDataLength[    166611,       2922]
+NotebookOptionsPosition[    165009,       2892]
+NotebookOutlinePosition[    165353,       2907]
+CellTagsIndexPosition[    165310,       2904]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2769,17 +2769,72 @@ Y3KJO3HE3GO/LvOIt7q5Xtfirr92v1sZcVWX59fefoX/8OBYWA==
 }, Open  ]],
 
 Cell["\<\
-This are results for Uniform moving heat source:
+These are results for Uniform moving heat source:
 The solution is given by M.Van Elsen et al. International Journal of Heat and \
 mass transfer.
 50 (2007) 4872-4882.
 \
 \>", "Text",
- CellChangeTimes->{{3.756639438478092*^9, 
-  3.7566395258208337`*^9}},ExpressionUUID->"68c2b8b3-558c-49e0-8a51-\
+ CellChangeTimes->{{3.756639438478092*^9, 3.7566395258208337`*^9}, {
+  3.756644758439085*^9, 
+  3.7566447592208543`*^9}},ExpressionUUID->"68c2b8b3-558c-49e0-8a51-\
 570d069693d9"],
 
+Cell[TextData[{
+ "Definition of the Fourier number:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"Fo", " ", "=", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"diffusive", " ", "transport", " ", "rate"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"storage", " ", "rate"}], ")"}]}], "=", 
+     FractionBox["\[Alpha]t", 
+      SuperscriptBox["L", "2"]]}]}], TraditionalForm]], "Subsection",
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "3e8ff1ab-d496-4072-9396-b69ddd31fe5d"]
+}], "Text",
+ CellChangeTimes->{{3.7566437499933605`*^9, 3.7566437653531075`*^9}, {
+  3.75664384036687*^9, 
+  3.7566439094130034`*^9}},ExpressionUUID->"4534619b-96df-44a6-856e-\
+55493bb735df"],
+
 Cell[BoxData[
+ RowBox[{
+  RowBox[{"Fos", "[", 
+   RowBox[{"\[Kappa]_", ",", "s_", ",", "t_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{"\[Kappa]", " ", "t"}], 
+   SuperscriptBox["s", "2"]]}]], "Input",
+ CellChangeTimes->{{3.7566439168507566`*^9, 3.7566439748667006`*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"53778aa7-4f4b-47d4-9dc5-62e065c9621b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Erfh", "[", 
+   RowBox[{"\[Kappa]_", ",", "x_", ",", "s_", ",", "tp_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Erf", "[", 
+    RowBox[{
+     FractionBox[
+      SqrtBox[
+       RowBox[{"Fos", "[", 
+        RowBox[{"\[Kappa]", ",", "s", ",", "t"}], "]"}]], "2"], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"x", "/", "s"}], "-", "1"}], ")"}]}], "]"}], "-", 
+   RowBox[{"Erf", "[", 
+    RowBox[{
+     FractionBox[
+      SqrtBox[
+       RowBox[{"Fos", "[", 
+        RowBox[{"\[Kappa]", ",", "s", ",", "t"}], "]"}]], "2"], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"x", "/", "s"}], "+", "1"}], ")"}]}], 
+    "]"}]}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"\[Theta]unif", "[", 
    RowBox[{
@@ -2790,17 +2845,53 @@ Cell[BoxData[
     RowBox[{"-", "1"}], 
     RowBox[{
      SuperscriptBox["2", "5"], " ", "\[Eta]"}]], 
-   RowBox[{"NIntegrate", "["}]}]}]], "Input",
+   RowBox[{"NIntegrate", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Erfh", "[", 
+       RowBox[{
+        RowBox[{"x", "+", 
+         RowBox[{"V", 
+          RowBox[{"(", 
+           RowBox[{"t", "-", "tp"}], ")"}]}]}], ",", "ch", ",", "tp"}], "]"}],
+       "*", 
+      RowBox[{"Erfh", "[", 
+       RowBox[{"y", ",", "ah", ",", "tp"}], "]"}], "*", 
+      RowBox[{"Erfh", "[", 
+       RowBox[{"z", ",", "bh", ",", "tp"}], "]"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"tp", ",", "0", ",", "t"}], "}"}]}], "]"}]}]}]}], "Input",
  CellChangeTimes->{{3.7566395331643443`*^9, 3.7566395523048553`*^9}, {
   3.7566421601942563`*^9, 3.7566422051305685`*^9}, {3.7566423297763004`*^9, 
   3.756642383878272*^9}, {3.756642459940297*^9, 3.7566424770652447`*^9}, {
-  3.7566427384383354`*^9, 
-  3.7566427413752527`*^9}},ExpressionUUID->"5f6ee61c-3f18-4806-9e05-\
-6b3c6aa809a5"]
+  3.7566427384383354`*^9, 3.7566427413752527`*^9}, {3.756643095498287*^9, 
+  3.756643096858559*^9}, {3.7566431476070395`*^9, 3.756643278778589*^9}, {
+  3.7566433821376143`*^9, 3.756643411028144*^9}, {3.756643455980374*^9, 
+  3.7566434625585947`*^9}, {3.7566435281053023`*^9, 3.7566435797913303`*^9}, {
+  3.756643611087827*^9, 3.756643620260395*^9}, {3.7566439807680483`*^9, 
+  3.756643989412219*^9}, {3.756644029365595*^9, 
+  3.7566440452981195`*^9}},ExpressionUUID->"5f6ee61c-3f18-4806-9e05-\
+6b3c6aa809a5"],
+
+Cell[TextData[{
+ "in original paper the Fo is seems defined as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["s", "2"], "/", 
+    RowBox[{"\[Kappa]", "(", 
+     RowBox[{"t", "-", 
+      SuperscriptBox["t", "'"]}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "af31efc7-afc2-46c3-b0ab-bb7f7b999995"]
+}], "Subsubsection",
+ CellChangeTimes->{{3.7566448349382825`*^9, 
+  3.756644903438161*^9}},ExpressionUUID->"0b655689-d54d-46ec-b472-\
+bc32680dae5c"]
 }, Open  ]]
 },
 WindowSize->{759, 833},
-WindowMargins->{{Automatic, 490}, {Automatic, 233}},
+WindowMargins->{{Automatic, 487}, {188, Automatic}},
 FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
@@ -2821,14 +2912,17 @@ Cell[776, 27, 500, 10, 78, "Text",ExpressionUUID->"da8bb1c3-04bf-4145-87b1-1f9a2
 Cell[1279, 39, 543, 15, 210, "Text",ExpressionUUID->"e5304407-2593-4685-8b69-5fce6f72f3af"],
 Cell[1825, 56, 224, 6, 56, "Text",ExpressionUUID->"72d13e1e-b233-4772-9714-ce6df673b814"],
 Cell[2052, 64, 514, 13, 86, "Input",ExpressionUUID->"6ab692d7-6060-453b-ac13-ed733de6b6f1"],
-Cell[2569, 79, 1064, 32, 88, "Input",ExpressionUUID->"fb864b63-76fb-430b-bf31-cfe206cdbddd"],
+Cell[2569, 79, 1064, 32, 72, "Input",ExpressionUUID->"fb864b63-76fb-430b-bf31-cfe206cdbddd"],
 Cell[3636, 113, 174, 3, 34, "Text",ExpressionUUID->"8fd9f815-b645-4e11-837d-795c9b706a46"],
 Cell[CellGroupData[{
-Cell[3835, 120, 921, 27, 48, "Input",ExpressionUUID->"cff8898c-da7f-4021-934e-e0f48201afb4"],
+Cell[3835, 120, 921, 27, 32, "Input",ExpressionUUID->"cff8898c-da7f-4021-934e-e0f48201afb4"],
 Cell[4759, 149, 156071, 2618, 351, "Output",ExpressionUUID->"c27b46cc-9521-4b23-af81-339244e9d503"]
 }, Open  ]],
-Cell[160845, 2770, 317, 9, 100, "Text",ExpressionUUID->"68c2b8b3-558c-49e0-8a51-570d069693d9"],
-Cell[161165, 2781, 666, 17, 72, "Input",ExpressionUUID->"5f6ee61c-3f18-4806-9e05-6b3c6aa809a5"]
+Cell[160845, 2770, 369, 10, 100, "Text",ExpressionUUID->"68c2b8b3-558c-49e0-8a51-570d069693d9"],
+Cell[161217, 2782, 695, 19, 65, "Text",ExpressionUUID->"4534619b-96df-44a6-856e-55493bb735df"],
+Cell[161915, 2803, 350, 8, 53, "Input",ExpressionUUID->"53778aa7-4f4b-47d4-9dc5-62e065c9621b"],
+Cell[162268, 2813, 2227, 60, 130, "Input",ExpressionUUID->"5f6ee61c-3f18-4806-9e05-6b3c6aa809a5"],
+Cell[164498, 2875, 495, 14, 47, "Subsubsection",ExpressionUUID->"0b655689-d54d-46ec-b472-bc32680dae5c"]
 }, Open  ]]
 }
 ]
