@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     64790,       1363]
-NotebookOptionsPosition[     62430,       1316]
-NotebookOutlinePosition[     62785,       1332]
-CellTagsIndexPosition[     62742,       1329]
+NotebookDataLength[     64835,       1365]
+NotebookOptionsPosition[     62476,       1318]
+NotebookOutlinePosition[     62830,       1334]
+CellTagsIndexPosition[     62787,       1331]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -545,8 +545,9 @@ Cell[BoxData[
                     None, Evaluator -> Automatic, Method -> "Preemptive"], 
                     Alignment -> {Center, Center}, ImageSize -> 
                     Dynamic[{
-                    Automatic, 3.5 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
                     GraphicsBox[{{
                     GrayLevel[0.6], 
                     AbsolutePointSize[5], 
@@ -624,8 +625,9 @@ q5SZmRFAL++xNeOlE0Dwt3AR
                     None, Evaluator -> Automatic, Method -> "Preemptive"], 
                     Alignment -> {Center, Center}, ImageSize -> 
                     Dynamic[{
-                    Automatic, 3.5 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
                     GraphicsBox[{{
                     GrayLevel[0.6], 
                     AbsolutePointSize[5], 
@@ -1315,7 +1317,7 @@ Cell[BoxData[""], "Input",
 ffc147df7496"]
 },
 WindowSize->{808, 704},
-WindowMargins->{{270, Automatic}, {10, Automatic}},
+WindowMargins->{{Automatic, 302}, {8, Automatic}},
 FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
 2018)",
 StyleDefinitions->"Default.nb"
@@ -1350,21 +1352,21 @@ Cell[18749, 430, 516, 15, 36, "Text",ExpressionUUID->"b8f94c8c-0a37-4069-bfe4-91
 Cell[CellGroupData[{
 Cell[19290, 449, 2596, 58, 94, "Input",ExpressionUUID->"53ff0506-b314-420a-a98c-32b5c84c9ba7"],
 Cell[21889, 509, 545, 12, 42, "Message",ExpressionUUID->"c96bcfd6-351f-4e17-854e-ae00d6f9f350"],
-Cell[22437, 523, 11231, 226, 82, "Output",ExpressionUUID->"177703b8-2c45-4202-bb9f-818e9b13e27a"]
+Cell[22437, 523, 11277, 228, 90, "Output",ExpressionUUID->"177703b8-2c45-4202-bb9f-818e9b13e27a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33705, 754, 655, 15, 30, "Input",ExpressionUUID->"0d9ae127-259f-493b-864f-811e65669bab"],
-Cell[34363, 771, 6778, 128, 270, "Output",ExpressionUUID->"b761921b-eddb-4895-881d-9ebe7d654690"]
+Cell[33751, 756, 655, 15, 30, "Input",ExpressionUUID->"0d9ae127-259f-493b-864f-811e65669bab"],
+Cell[34409, 773, 6778, 128, 236, "Output",ExpressionUUID->"b761921b-eddb-4895-881d-9ebe7d654690"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41178, 904, 428, 11, 30, "Input",ExpressionUUID->"7ef9ddb9-5c81-4849-96ea-f9864d8ef659"],
-Cell[41609, 917, 7651, 146, 236, "Output",ExpressionUUID->"f59c23b5-0831-4ef6-9961-d1b8e289ef29"]
+Cell[41224, 906, 428, 11, 30, "Input",ExpressionUUID->"7ef9ddb9-5c81-4849-96ea-f9864d8ef659"],
+Cell[41655, 919, 7651, 146, 236, "Output",ExpressionUUID->"f59c23b5-0831-4ef6-9961-d1b8e289ef29"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[49297, 1068, 308, 7, 30, "Input",ExpressionUUID->"9944fb17-2015-4215-890e-b6f8d9b78448"],
-Cell[49608, 1077, 12651, 231, 236, "Output",ExpressionUUID->"74348faa-e288-4e79-adee-d81343afd781"]
+Cell[49343, 1070, 308, 7, 30, "Input",ExpressionUUID->"9944fb17-2015-4215-890e-b6f8d9b78448"],
+Cell[49654, 1079, 12651, 231, 236, "Output",ExpressionUUID->"74348faa-e288-4e79-adee-d81343afd781"]
 }, Open  ]],
-Cell[62274, 1311, 152, 3, 30, "Input",ExpressionUUID->"997a0981-939e-41f0-9de8-ffc147df7496"]
+Cell[62320, 1313, 152, 3, 30, "Input",ExpressionUUID->"997a0981-939e-41f0-9de8-ffc147df7496"]
 }
 ]
 *)
