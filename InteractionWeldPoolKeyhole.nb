@@ -1,0 +1,317 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10616,        309]
+NotebookOptionsPosition[      9567,        286]
+NotebookOutlinePosition[      9971,        302]
+CellTagsIndexPosition[      9928,        299]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Interaction of motion in the weld pool with the keyhole", "Section",
+ CellChangeTimes->{{3.8436574668899407`*^9, 
+  3.8436574926088943`*^9}},ExpressionUUID->"492c0953-a811-43af-8c17-\
+80e50107cac9"],
+
+Cell[TextData[{
+ "m is the mass flow is rate per unit area normal to the interface:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    OverscriptBox["m", "*"], "=", " ", 
+    RowBox[{"[", 
+     RowBox[{"\[Rho]", "(", 
+      RowBox[{
+       RowBox[{"u", ".", "v"}], " ", "-", " ", 
+       SubscriptBox[
+        RowBox[{
+         OverscriptBox[
+          RowBox[{"n", ")"}], "*"], " "}], "V"]}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "158516fb-26e4-47f4-bf96-aeb696ee1cf5"],
+ "= ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"[", 
+     RowBox[{"\[Rho]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"u", ".", "n"}], "-", 
+        OverscriptBox["n", "*"]}], ")"}]}], "]"}], "L"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "957c3e9f-b4fd-4e69-be83-ea723c940477"]
+}], "Text",
+ CellChangeTimes->{{3.843657546849027*^9, 3.843657687632614*^9}, {
+  3.8436619652235727`*^9, 3.843661996671318*^9}, {3.843707317244478*^9, 
+  3.8437074015450697`*^9}},ExpressionUUID->"f12f9222-71f9-45c3-8bf6-\
+7e99d4373477"],
+
+Cell["The next fluid dynamic boundary conditions is Eq.", "Text",
+ CellChangeTimes->{{3.843662066416441*^9, 
+  3.843662087080789*^9}},ExpressionUUID->"afa942b6-37da-42d5-a810-\
+6d322f069053"],
+
+Cell[TextData[{
+ "[\[Rho]\[ScriptU](\[ScriptU].n- ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["n", "*"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "4bfce26d-864f-4120-b206-4aff4b62e72f"],
+ ")+pn-d.n] = n(\[Gamma]\t)\n"
+}], "InlineFormula",
+ CellChangeTimes->{{3.843662211847484*^9, 3.843662369687399*^9}, {
+  3.8436624281754093`*^9, 3.843662470215578*^9}, {3.843662501934968*^9, 
+  3.843662502416184*^9}, {3.8437069814003763`*^9, 
+  3.8437069821759424`*^9}},ExpressionUUID->"8bc09e61-f5cc-420d-a097-\
+ee4329689c7d"],
+
+Cell[TextData[{
+ "Interface conditions on the three velocity components on keyhole wall:\n\n",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["u", "r", "L"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8fe1c334-2aae-4dd0-b648-cd176b4f9a5c"],
+ "(a,z)=-",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["u", "0"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "de7e0f64-442d-4ee8-94d4-2f0710773d08"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"\[PartialD]", 
+       SubsuperscriptBox["u", "r", "L"]}], "/", 
+      RowBox[{"\[PartialD]", "\[Theta]"}]}], "-", 
+     RowBox[{
+      SubsuperscriptBox["u", "\[Theta]", "L"], "(", 
+      RowBox[{"a", ",", "z"}], ")"}], "+", 
+     FractionBox[
+      RowBox[{"\[PartialD]", 
+       SubsuperscriptBox["u", "\[Theta]", "L"]}], 
+      RowBox[{"\[PartialD]", "r"}]]}], "=", "0"}], TraditionalForm]], 
+  "DisplayFormulaNumbered",
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e819f6d4-3999-4f3c-a6e0-0c827431e7f4"],
+ "\n",
+ Cell[BoxData[
+  RowBox[{
+   FractionBox[
+    RowBox[{"\[PartialD]", 
+     SubsuperscriptBox["u", "z", "L"]}], 
+    RowBox[{"\[PartialD]", "r"}]], "=", 
+   FractionBox["\[Tau]", 
+    SubscriptBox["\[Mu]", "E"]]}]],ExpressionUUID->
+  "f829cd75-49e5-4888-aeb5-a0e2b75744fc"],
+ "( ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"h", "-", "z"}], "a"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d8ba91d4-de08-47f8-8dcd-524150e3f175"],
+ ")"
+}], "Text",
+ CellChangeTimes->{{3.8437552193481245`*^9, 3.843755492759104*^9}, {
+  3.8437555450382257`*^9, 3.8437556773891735`*^9}, {3.843755776572973*^9, 
+  3.843755781469771*^9}},ExpressionUUID->"e6bff2c0-e8d0-4e8e-9993-\
+176b32d3c67d"],
+
+Cell[TextData[{
+ "The following boundary conditions at r=b:\n",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["v", "r", "L"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "487bbf5b-2575-4f6d-a173-dbb81129086a"],
+ "(b,z)=Ucos\[Theta]\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["u", "\[Theta]", "L"], "(", 
+     RowBox[{"b", ",", "z"}], ")"}], "=", 
+    RowBox[{"-", "Usin\[Theta]"}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["u", "z", "L"], "(", 
+     RowBox[{"b", ",", "z"}], ")"}], "=", "0"}], TraditionalForm]}],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e41cf2f9-0042-4e2a-a7be-504f5fdba5ec"]
+}], "Text",
+ CellChangeTimes->{{3.8437558976108418`*^9, 
+  3.8437560558545885`*^9}},ExpressionUUID->"54049b51-90a1-4af1-ab90-\
+a7e44471aa31"],
+
+Cell[TextData[{
+ "The surface conditions to be imposed at top and bottom of the melt pool. \
+Reasonable\napproximation is to regards its location as being known at z=0 \
+and z=2h at the bottom.\nIn that case there is zero normal velocity there and \
+zero tangential stress so that:\n",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["u", "z", "L"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f4faca93-e61c-40e9-81c4-f8760e0cab84"],
+ "(r,0)=",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["u", "z", "L"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ca3ff512-636d-4506-9b41-7d1e1c0499da"],
+ "(r,2h)=0"
+}], "Text",
+ CellChangeTimes->{{3.843756118647639*^9, 3.8437561472615147`*^9}, {
+   3.843756192966198*^9, 3.8437562513337736`*^9}, {3.8437563311340623`*^9, 
+   3.8437563934618726`*^9}, 
+   3.8439094257439346`*^9},ExpressionUUID->"1d8780b6-1bb6-4c93-b23a-\
+fdb39c68a29b"],
+
+Cell[TextData[{
+ "Stokes equations and conservation of the mass:\n",
+ StyleBox[Cell[BoxData[
+  FormBox[
+   FractionBox["1", 
+    SubscriptBox["\[Mu]", "E"]], TraditionalForm]], "InlineFormula",
+  FormatType->TraditionalForm,ExpressionUUID->
+  "5689efa8-66ce-4ae2-9ea7-8de7464d4695"], "InlineFormula"],
+ StyleBox[" ", "InlineFormula"],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[PartialD]", 
+     SubscriptBox["p", "L"]}], 
+    RowBox[{"\[PartialD]", "r"}]], TraditionalForm]], "InlineFormula",
+  FormatType->TraditionalForm,ExpressionUUID->
+  "22bcba16-321f-4cf9-beda-2e6758a911bc"], "InlineFormula"],
+ StyleBox["= ", "InlineFormula"],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[PartialD]", "2"], 
+     SubsuperscriptBox["v", "r", "L"]}], 
+    RowBox[{"\[PartialD]", 
+     SuperscriptBox["r", "2"]}]], TraditionalForm]], "InlineFormula",
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f7f52f6d-0f56-4ed6-bb18-73938da6fef1"], "InlineFormula"],
+ StyleBox["+ ", "InlineFormula"],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   FractionBox["1", 
+    SuperscriptBox["r", "2"]], TraditionalForm]], "InlineFormula",
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6f6d5ff8-f354-4a57-9332-029f1196f72a"], "InlineFormula"],
+ StyleBox[" ", "InlineFormula"],
+ StyleBox[Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[PartialD]", "2"], 
+     SubsuperscriptBox["v", "r", "L"]}], 
+    RowBox[{"\[PartialD]", 
+     SuperscriptBox["\[Theta]", "2"]}]], TraditionalForm]], "InlineFormula",
+  FormatType->TraditionalForm,ExpressionUUID->
+  "551947d6-d081-4997-8f36-0eb00af0c9c8"], "InlineFormula"],
+ StyleBox["+ ", "InlineFormula"],
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[PartialD]", "2"], 
+     SubsuperscriptBox["v", "r", "L"]}], 
+    RowBox[{"\[PartialD]", 
+     SuperscriptBox["\[Theta]", "2"]}]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f9fa49f8-08ca-46b1-832e-7e5002dd489b"],
+ " + ",
+ StyleBox[Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[PartialD]", "2"], 
+     SubsuperscriptBox["v", "r", "L"]}], 
+    RowBox[{"\[PartialD]", 
+     SuperscriptBox["z", "2"]}]], TraditionalForm]], "InlineFormula",
+  FormatType->TraditionalForm,ExpressionUUID->
+  "eb7d5be0-e4ed-41a4-ba04-44e471fd74a1"], "InlineFormula"],
+ StyleBox["+ ", "InlineFormula"],
+ Cell[BoxData[
+  FormBox[
+   FractionBox["1", "r"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "78257cda-5dde-4fe4-adf9-b231615a3132"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[PartialD]", 
+     SubsuperscriptBox["v", "r", "L"]}], 
+    RowBox[{"\[PartialD]", "r"}]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "fe60d0d3-2962-4e5d-a985-6454322a840e"],
+ "-",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["2", 
+    SuperscriptBox["r", "2"]], TraditionalForm]],ExpressionUUID->
+  "6e3da438-0055-49b8-9740-75f44dde55ff"]
+}], "Text",
+ CellChangeTimes->{{3.843757113768099*^9, 3.84375714073209*^9}, {
+  3.8437573490448713`*^9, 3.8437575002930384`*^9}, {3.8437575315016727`*^9, 
+  3.84375762023772*^9}, {3.8437576521180596`*^9, 3.843757672733137*^9}, {
+  3.843909075483962*^9, 3.8439092007151713`*^9}, {3.8439092510911613`*^9, 
+  3.8439093556208277`*^9}},ExpressionUUID->"34e32441-2956-49ba-b3da-\
+6b234130a853"]
+}, Open  ]]
+},
+WindowSize->{983, 790},
+WindowMargins->{{Automatic, -314}, {57, Automatic}},
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"68a92209-26d3-4b8a-8fea-1600e54720fc"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 204, 3, 67, "Section",ExpressionUUID->"492c0953-a811-43af-8c17-80e50107cac9"],
+Cell[787, 27, 1072, 32, 70, "Text",ExpressionUUID->"f12f9222-71f9-45c3-8bf6-7e99d4373477"],
+Cell[1862, 61, 191, 3, 34, "Text",ExpressionUUID->"afa942b6-37da-42d5-a810-6d322f069053"],
+Cell[2056, 66, 543, 13, 42, "InlineFormula",ExpressionUUID->"8bc09e61-f5cc-420d-a097-ee4329689c7d"],
+Cell[2602, 81, 1759, 54, 144, "Text",ExpressionUUID->"e6bff2c0-e8d0-4e8e-9993-176b32d3c67d"],
+Cell[4364, 137, 867, 25, 100, "Text",ExpressionUUID->"54049b51-90a1-4af1-ab90-a7e44471aa31"],
+Cell[5234, 164, 923, 22, 100, "Text",ExpressionUUID->"1d8780b6-1bb6-4c93-b23a-fdb39c68a29b"],
+Cell[6160, 188, 3391, 95, 68, "Text",ExpressionUUID->"34e32441-2956-49ba-b3da-6b234130a853"]
+}, Open  ]]
+}
+]
+*)
+
