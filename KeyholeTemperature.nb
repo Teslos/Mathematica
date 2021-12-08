@@ -1,0 +1,955 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31718,        947]
+NotebookOptionsPosition[     30416,        919]
+NotebookOutlinePosition[     30818,        935]
+CellTagsIndexPosition[     30775,        932]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Keyhole modeling for the temperature field. This is some of the first trials \
+for the simple source terms that include different point and line moving \
+sources. The basics are explained inside the book \
+\[OpenCurlyDoubleQuote]Keyhole Welding: The Solid and Liquid Phases\
+\[CloseCurlyDoubleQuote] by Alexander Kaplan.
+\
+\>", "Text",
+ CellChangeTimes->{{3.8478758023467135`*^9, 3.84787587511377*^9}, {
+  3.8478760885685787`*^9, 
+  3.8478761105782423`*^9}},ExpressionUUID->"25d7daf4-fa69-4be8-9bb9-\
+b68e2852f121"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Steady State 3d Solutions based on Moving Point Sources of Heat:\
+\>", "Subtitle",
+ CellChangeTimes->{{3.847876216797777*^9, 
+  3.8478762476492577`*^9}},ExpressionUUID->"034a0e57-bf7e-4097-afad-\
+10069a3fddb0"],
+
+Cell[BoxData[""], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.847876258869179*^9, 3.847876297602376*^9}, {
+  3.847876340386606*^9, 
+  3.8478764929402504`*^9}},ExpressionUUID->"b0d74fd2-0259-4c38-b1b7-\
+0604fe444a0e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"A", " ", "=", " ", "0.4"}], ";", "  ", 
+   RowBox[{"(*", "absorptance", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"PL", " ", "=", " ", "150"}], ";"}], "  ", 
+  RowBox[{"(*", "power", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"K", " ", "=", " ", "20"}], ";"}], "   ", 
+  RowBox[{"(*", " ", "conductivity", " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Kappa]", " ", "=", "  ", "10"}], ";"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"thermal", " ", "diffusivity"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ta", " ", "=", " ", "298"}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"ambient", " ", "temperature"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"T", "[", 
+    RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], ":=", " ", 
+   RowBox[{"Ta", " ", "+", " ", 
+    RowBox[{"2", " ", "A", " ", 
+     RowBox[{"PL", "/", "K"}], " ", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{
+       SuperscriptBox["x", "2"], "+", 
+       SuperscriptBox["y", "2"], "+", 
+       SuperscriptBox["z", "2"]}], "]"}], 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"v", "[", 
+         RowBox[{"x", "+", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{
+            SuperscriptBox["x", "2"], "+", 
+            SuperscriptBox["y", "2"], "+", 
+            SuperscriptBox["z", "2"]}], "]"}]}], "]"}]}], "/", 
+       RowBox[{"(", 
+        RowBox[{"2", " ", "\[Kappa]"}], ")"}]}], "]"}]}]}]}]}]}], "Input",
+ CellChangeTimes->{{3.8478765042265167`*^9, 3.847876617748068*^9}, {
+  3.84787666730031*^9, 3.847876704100088*^9}, {3.847888998112808*^9, 
+  3.84788904748674*^9}},ExpressionUUID->"44cec70e-501a-40f6-b20a-\
+50406ba2c74f"],
+
+Cell[TextData[StyleBox["Rosenthal solution for the line source model", \
+"Title"]], "Text",
+ CellChangeTimes->{{3.847890135756005*^9, 
+  3.847890153687812*^9}},ExpressionUUID->"d4758358-b51e-40e4-8ccd-\
+367399814dc1"],
+
+Cell[TextData[{
+ "The solution for the temperature field T(r,\[Phi]) in the polar coordinates \
+is given by the analytical solution:\nT(r,\[Phi]) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", "a"], "+", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"P", "'"}], "/", "2"}], 
+     SubscriptBox["\[Pi]\[Lambda]", "th"], " ", 
+     RowBox[{
+      SubscriptBox["K", "o"], "(", 
+      RowBox[{"Pe", " ", "*", "r"}], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "708179d7-7f86-4fb4-a3ab-359d62bac600"],
+ " exp(-Pe * r *cos(\[Phi])) where Pe is modified Peclet number:\nPE = \
+\[Vee]/2\[Kappa], ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["T", "a"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8a8032d3-815b-48a5-8e30-a855a03d0a9f"],
+ " - ambient temperature, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Lambda]", 
+      RowBox[{"th", " "}]], "is", " ", "the", " ", "thermal", " ", 
+     "diffusivity"}], ",", " ", 
+    RowBox[{
+     SubscriptBox["K", "0"], "(", ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "86f5edbf-45a0-4893-add1-7555e9a46b5e"],
+ " is the modified Bessel function\nof second kind and zeroth order. The \
+temperature has a singularity at the origin, where the line source\nwith \
+power per unit depth P is located.\nThe previous equation can be calculated \
+to explicitly give the strength P\[CloseCurlyQuote] which is necessary to \
+reach evaporation of the arbitrary point in polar coordinates. \nP\
+\[CloseCurlyQuote](r,\[Phi]) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox["T", "v"], "-", 
+      SubscriptBox["T", "a"]}], ")"}], " ", "2", 
+    SubscriptBox["\[Pi]\[Lambda]", 
+     RowBox[{"th", " "}]], " ", 
+    FractionBox["1", 
+     RowBox[{
+      SubscriptBox["K", "o"], "(", 
+      RowBox[{"Pe", " ", "*", " ", "r"}], ")"}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3075e709-0450-4553-a344-d0b48654fa9d"],
+ "exp(Pe * r cos(\[Phi]))\n\nThe heat flow is determined by Fourier\
+\[CloseCurlyQuote]s law of heat conduction that can be simplified by \
+considering only of the radial component:\nq = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      SubscriptBox["\[Lambda]", "th"]}], " ", 
+     RowBox[{"\[Del]", "T"}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"-", 
+      SubscriptBox["\[Lambda]", "th"]}], 
+     FractionBox[
+      RowBox[{"\[PartialD]", "T"}], 
+      RowBox[{"\[PartialD]", "r"}]]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ea2e37e4-1a82-4cd7-ae47-baf30182b244"],
+ "\nSpatial derivation of the temperature of the Rosenthal solution with \
+respect to r leads to:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[PartialD]", "T"}], "/", 
+     RowBox[{"\[PartialD]", "r"}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"P", "'"}], " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"r", ",", " ", "\[Phi]"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"2", 
+        SubscriptBox["\[Pi]\[Lambda]", "th"]}], ")"}]}], 
+     RowBox[{
+      RowBox[{"Pe", "'"}], "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{
+          SubscriptBox["K", "0"], "(", 
+          RowBox[{
+           RowBox[{"Pe", "'"}], " ", "r"}], ")"}]}], " ", 
+        RowBox[{"cos", "(", "\[Phi]", ")"}]}], " ", "+", " ", 
+       RowBox[{
+        SubscriptBox[
+         RowBox[{"(", 
+          RowBox[{"K", "'"}], ")"}], "0"], 
+        RowBox[{"(", 
+         RowBox[{"Pe", "*", "r"}], ")"}]}]}], "]"}], 
+     RowBox[{"exp", "(", 
+      RowBox[{
+       RowBox[{"-", "Pe"}], " ", "r", " ", 
+       RowBox[{"cos", "(", "\[Phi]", ")"}]}], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f26ec15c-21b3-4600-bdc1-fec9f6841cda"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"K", "'"}], "o"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "cfa7dda9-4691-4ddf-9722-fd90c460b43b"],
+ "(x) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"-", 
+    RowBox[{
+     SubscriptBox["K", "1"], "(", "x", ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e4539a9d-c31a-4ea3-bf15-7cb950f16d32"],
+ "\nq(r,\[Phi]) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"-", 
+    SubscriptBox["\[Lambda]", "th"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "adfe3903-fecd-4a9f-88d1-46683380f6b1"],
+ "\[PartialD]T/\[PartialD]r = P\[CloseCurlyQuote](r,\[Phi])/2\[Pi] ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"Pe", "'"}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        SubscriptBox["K", "0"], "(", 
+        RowBox[{
+         RowBox[{"Pe", "'"}], "r"}], ")"}], " ", 
+       RowBox[{"cos", "(", "\[Phi]", ")"}]}], " ", "+", " ", 
+      RowBox[{
+       SubscriptBox["K", "1"], "(", 
+       RowBox[{
+        RowBox[{"Pe", "'"}], "r"}], ")"}]}], ")"}], " ", 
+    RowBox[{"exp", "(", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"Pe", "'"}]}], "r", " ", 
+      RowBox[{"cos", "(", "\[Phi]", ")"}]}], ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "31427e44-8de0-408c-85e1-6cac64ee7f45"],
+ "\n\nIf we consider the boundary condition that the evaporation temperature \
+Tv shall be reached at \nkeyhole wall.\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["q", "v"], "(", 
+     RowBox[{"r", ",", "\[Phi]"}], ")"}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["T", "v"], "-", 
+       SubscriptBox["T", "a"]}], ")"}], 
+     SubscriptBox["\[Lambda]", "th"], 
+     RowBox[{"Pe", "'"}], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"cos", "(", "\[Phi]", ")"}], "+", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["K", "1"], "(", 
+         RowBox[{
+          RowBox[{"Pe", "'"}], "r"}], ")"}], "/", 
+        RowBox[{
+         SubscriptBox["K", "0"], "(", 
+         RowBox[{
+          RowBox[{"Pe", "'"}], "r"}], ")"}]}]}], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "be1774aa-1f6d-424e-afa4-39de1548943c"],
+ "\nKeyhole profile in the x-z plane only the azimuthal angle \[Phi]=0,\[Pi] \
+are of interest, describing the heat\nloses of any point xf at the front wall \
+(\[Phi]=0)\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["q", "v"], "(", 
+    SubscriptBox["x", "r"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "82e099be-c4c2-43c0-b681-84827f573d1d"],
+ ")=(",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", "v"], "-", 
+    SubscriptBox["T", "a"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "4e0e8179-0262-43c3-b3f9-d7aa27ca993b"],
+ ")",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Lambda]", "th"], 
+    RowBox[{"Pe", "'"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "0490f509-99a6-4014-9675-7013189abbbc"],
+ "(-1 + ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["K", "1"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e1b2a8cb-13d2-4883-89c1-1de4d5e5515a"],
+ "(Pe\[CloseCurlyQuote] ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "r"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "25fa40f2-0e29-4b44-a669-1b85d0f648c3"],
+ ")/",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["K", "0"], TraditionalForm]],ExpressionUUID->
+  "40a09c6b-d3bb-4858-8798-add235cfab65"],
+ "(Pe\[CloseCurlyQuote] ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "r"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8b55c4d5-7c10-4b25-bc6b-ead62a09dad0"],
+ "))\n"
+}], "Text",
+ CellChangeTimes->{{3.8478901780392294`*^9, 3.8478905150077434`*^9}, {
+  3.847890553928197*^9, 3.8478909084811716`*^9}, {3.847890990136546*^9, 
+  3.847891115651067*^9}, {3.8478911888088346`*^9, 3.8478913503617945`*^9}, {
+  3.847891517809513*^9, 3.8478915405701413`*^9}, {3.847891570962215*^9, 
+  3.8478918772270184`*^9}, {3.847892022233077*^9, 3.847892136435484*^9}, {
+  3.8478921873154855`*^9, 3.8478922069085135`*^9}, {3.8478923442899313`*^9, 
+  3.8478924650433173`*^9}, {3.847892518402796*^9, 3.8478925800200586`*^9}, {
+  3.8478926696909285`*^9, 
+  3.8478929344116445`*^9}},ExpressionUUID->"595aca37-5d15-4c85-8448-\
+34a224df5808"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Absorption", "Subtitle",
+ CellChangeTimes->{{3.8479626612076035`*^9, 
+  3.847962672806258*^9}},ExpressionUUID->"63c9ce67-6e9f-45e9-b888-\
+a7722da56e49"],
+
+Cell[TextData[{
+ "The plasma absorption can be described by Beer-Lambert law:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SubscriptBox["I", "a"], "(", "z", ")"}], "/", 
+     RowBox[{
+      SubscriptBox["I", "i"], "(", "0", ")"}]}], " ", "=", " ", 
+    RowBox[{"1", "-", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["I", "t"], "(", "z", ")"}], "/", 
+      RowBox[{
+       SubscriptBox["I", "i"], "(", "0", ")"}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "387c7a20-e852-44b6-a136-07916c8ffc09"],
+ "=1-exp(-",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Alpha]", "iB"], "z"}], ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b735574e-7da4-4fe4-9884-1d8c917a9796"],
+ "\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["I", "i"], " ", "-", 
+     RowBox[{"is", " ", "the", " ", "incident", " ", "intensity"}]}], ",", 
+    " ", 
+    RowBox[{
+     SubscriptBox["I", "t"], "-", 
+     RowBox[{"the", " ", "transmitted", " ", "intensity"}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "10737153-9442-4da9-972c-b9c9495f93d0"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", "a"], "is", " ", "the", " ", "intensity", " ", 
+    "absorbed", " ", "when", " ", "passing", " ", "path", " ", 
+    RowBox[{"z", "."}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "db82c130-da40-453e-a1b9-da86248b77fa"],
+ " For the plasma absorption coefficient due to\ninverse Bremsstrahlung ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Alpha]", "iB"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "0c6d037d-a22b-4f0a-858d-a336d8ef444c"],
+ " that is temperature dependent. Mean value of 100 ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["m", 
+    RowBox[{"-", "1"}]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "024c1e50-7e12-489a-a2e3-1bb872b092f5"],
+ " is used.\nAbsorbed fraction of the metal vapour plume over the workpiece \
+is known by estimating height\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["h", "pl"], "of", " ", "the", " ", 
+    RowBox[{"plume", " ", ":"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f1c5397e-4bad-42e3-b28e-1726b18f0339"],
+ " \n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Alpha]", "pl"], "=", 
+    RowBox[{"1", "-", 
+     RowBox[{"exp", "(", 
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["\[Alpha]", "iB"]}], 
+       SubscriptBox["h", "pl"]}], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "23e57558-9cd1-4191-88a1-b72a575f9bbb"],
+ "\nThe remaining radiation  is transmitted and passes the plume. The power \
+hitting the workpiece outside\nthe keyhole is strongly reflected and only \
+small part is absorbed. The first plasma absorption before\nhitting the \
+keyhole wall:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Alpha]", 
+     RowBox[{"iB", ",", "1", " "}]], "=", " ", 
+    RowBox[{"1", "-", 
+     RowBox[{"exp", "(", 
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["\[Alpha]", "iB"]}], 
+       RowBox[{"d", "/", "2"}]}], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "13622fd6-7415-4316-a232-f1d8d99c307c"],
+ "\nThe first Fresnel absorption at each point is included in the energy \
+balance by multiplying the local beam intensity by the Fresnel absorption \
+coefficient.\nAfter ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["n", "mr"], " ", "reflections"}], ",", " ", "assuming"}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a0249cb2-17b2-4310-b1a3-242eb6cf11d0"],
+ " geometrical optics, the part of the remaining intensity ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", "rn"], ":"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "0e27604d-d2d6-46b7-9864-f17f6ac86210"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["I", "rn"], "/", 
+     SubscriptBox["I", "i"]}], "=", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["\[Rho]", "Fr"], ")"}], "nmr"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "83f8e892-3ed6-4981-860c-f8e165090408"],
+ "\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Rho]", "Fr"], "is", " "}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "28a54204-bbec-43cd-b7bc-f60c9210b436"],
+ " the Fresnel reflection coefficient, which is in general angle-dependent.\n\
+The approximation of the keyhole profile with mean wall angle ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "w"], " ", "the"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ee78c910-8688-49d8-addd-9515c7457ca3"],
+ " angle of reflection ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "r"], "=", 
+    RowBox[{"2", 
+     SubscriptBox["n", "mr"], 
+     SubscriptBox["\[Theta]", "w"]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "34bc8d61-0638-4663-a966-7db0ddafecd6"],
+ "\n\nThe number of the reflections is defined by counting them up to the \
+limiting angle of the reflected beam:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "r"], "\[GreaterEqual]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "10fc6502-8cf9-43f6-93eb-5d9dddb7a72c"],
+ "\[Pi]/2..\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["n", "mr"], "=", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"\[Pi]", "/", "2"}], 
+      RowBox[{"2", 
+       SubscriptBox["\[Theta]", "w"]}]], "=", 
+     FractionBox["\[Pi]", 
+      RowBox[{"4", 
+       SubscriptBox["\[Theta]", "w"]}]]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "4273d095-a3bf-42d5-859d-50f37af7719c"],
+ "\nIf the first reflection, which is separately considered in the energy \
+balance.\nUsing previous equation for the number of reflections:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Rho]", "mr"], "=", 
+    SuperscriptBox[
+     RowBox[{"[", 
+      RowBox[{
+       SubscriptBox["\[Rho]", "Fr"], 
+       RowBox[{"(", 
+        RowBox[{"\[Theta]", "=", 
+         RowBox[{"\[Pi]", "/", "2"}]}], ")"}]}], "]"}], 
+     RowBox[{"nmr", "-", "1"}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "912d833e-83c5-416a-b832-b05c06b7214d"],
+ "\nConsequently the absorption coefficient ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Alpha]", "mr"], ":"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "119484c6-2d18-49a0-980f-3fb398499bbb"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Alpha]", "mr"], "=", 
+    RowBox[{"1", "-"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e24893b4-63dd-4faf-b683-da976020a924"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Rho]", "mr"], TraditionalForm]],ExpressionUUID->
+  "3d4239e7-460a-47d3-abfe-448255efd86b"],
+ "\n\nDuring the reflections the rays cross plasma and are partially absorbed \
+by it. \n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Alpha]", 
+     RowBox[{"iB", ",", "mr"}]], "=", 
+    RowBox[{"1", "-", 
+     RowBox[{"exp", "(", 
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["\[Alpha]", "iB"]}], "3", 
+       RowBox[{"d", "/", "2"}]}], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ddb22674-3cc5-4db8-9260-00d0a2e165e1"],
+ "\n\nThe of the incident intensities damped by the plume minus the remaining \
+intensity ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", "r"], " "}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "abfa7cbe-df5b-4fbd-a84a-0cacb90c0eaa"],
+ "leaving the\nkeyhole:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["I", 
+      RowBox[{"a", ",", "Fr"}]], "+", 
+     SubscriptBox["I", 
+      RowBox[{"a", ",", "mr"}]], "+", 
+     SubscriptBox["I", 
+      RowBox[{"a", ",", "iB"}]]}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         SubscriptBox["\[Alpha]", "pl"]}], ")"}], 
+       RowBox[{"I", "(", 
+        RowBox[{"x", ",", "z"}], ")"}]}], "-", 
+      SubscriptBox["I", "r"]}], "=", 
+     RowBox[{"f", "(", 
+      SubscriptBox["\[Theta]", "w"], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6d04efd3-b017-4073-a9ae-9284efeed1e9"],
+ " \nwhere:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", "r"], "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Alpha]", "pl"]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Alpha]", 
+        RowBox[{"iB", ",", "1"}]]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Alpha]", "Fr"]}], ")"}], " ", 
+     RowBox[{"x", "(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Alpha]", "mr"]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Alpha]", 
+        RowBox[{"iB", ",", "mr"}]]}], ")"}], 
+     RowBox[{"I", "(", 
+      RowBox[{"x", ",", "z"}], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b20d453a-d1d9-41ac-99d1-43103aa375b1"],
+ "\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", 
+     RowBox[{"a", ",", "Fr"}]], "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Alpha]", "pl"]}], ")"}], "*", 
+     RowBox[{"(", 
+      RowBox[{"1", "-"}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ebd25ed9-5f25-43f2-9a84-711112685657"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Alpha]", 
+      RowBox[{"iB", ",", "1"}]], ")"}], 
+    SubscriptBox["\[Alpha]", "Fr"], 
+    RowBox[{"I", "(", 
+     RowBox[{"x", ",", "z"}], ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "811cf989-cef1-4635-9e9b-4fe9cb0f45fc"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", 
+     RowBox[{"a", ",", "mr"}]], "="}], TraditionalForm]],ExpressionUUID->
+  "b300d288-edd6-46ee-a83a-3b2d4b734369"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     SubscriptBox["\[Alpha]", "pl"]}], ")"}], TraditionalForm]],
+  ExpressionUUID->"34b11bea-e8d4-49cd-9660-128377b79b5f"],
+ "*(1-",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Alpha]", 
+      RowBox[{"iB", ",", "1"}]], ")"}], 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      SubscriptBox["\[Alpha]", "Fr"]}], ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "95759fab-9236-4e8f-bbe9-fcc968bedffa"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Alpha]", "mr"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "04b1d5bc-556f-406c-90c1-50493924ee67"],
+ "I(x,z)\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", 
+     RowBox[{"a", ",", "iB", " "}]], "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SubscriptBox["\[Alpha]", "pl"]}], ")"}], "("}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "210a7634-3506-4d4d-8bda-0309e9610f3f"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Alpha]", 
+    RowBox[{"iB", ",", "1"}]], TraditionalForm]],ExpressionUUID->
+  "764dd394-1aa2-40cb-a9d3-0fbb2013db60"],
+ "+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Alpha]", 
+     RowBox[{"iB", ",", "mr"}]], "(", 
+    RowBox[{"1", "-", 
+     SubscriptBox["\[Alpha]", 
+      RowBox[{"iB", ",", "1"}]]}], ")"}], TraditionalForm]],ExpressionUUID->
+  "0d1ad0b6-8aab-4f13-b1b3-3377c7bedfa7"],
+ "x(1-",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Alpha]", "Fr"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "69431dcc-86f9-4715-956b-5f56d1b8218e"],
+ ")(1-",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Alpha]", "mr"], ")"}], ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "5ca31e65-6fd7-4b1c-b923-cd41db51532e"],
+ " I(x,z)"
+}], "Text",
+ CellChangeTimes->{{3.847962697819959*^9, 3.8479631936168823`*^9}, {
+   3.847963271202007*^9, 3.847963320793789*^9}, {3.8479665326772714`*^9, 
+   3.8479666035507717`*^9}, {3.847966951687317*^9, 3.847966995559787*^9}, {
+   3.847967030212762*^9, 3.847967094365617*^9}, 3.847967643541419*^9, {
+   3.8479676809173584`*^9, 3.8479676818623943`*^9}, {3.8479677302137966`*^9, 
+   3.847967897519374*^9}, {3.8479679310841537`*^9, 3.8479680190301175`*^9}, {
+   3.8479680569108677`*^9, 3.847968152638631*^9}, {3.8479682594784307`*^9, 
+   3.847968295318306*^9}, {3.8479684004391904`*^9, 3.8479684360484276`*^9}, {
+   3.8479685169741807`*^9, 3.8479687128816338`*^9}, {3.847968791183565*^9, 
+   3.847968840207388*^9}, {3.8479692204955177`*^9, 3.8479693737336044`*^9}, {
+   3.847969407903664*^9, 3.847969448272461*^9}, {3.8479706378897357`*^9, 
+   3.8479707485691333`*^9}, {3.8479707873781652`*^9, 3.847970943686285*^9}, {
+   3.84797098996377*^9, 3.8479711150789547`*^9}, {3.847971155145856*^9, 
+   3.847971196284518*^9}, {3.847971412850954*^9, 3.847971515591009*^9}, {
+   3.8479715496458015`*^9, 3.8479716774677267`*^9}, {3.8479717127315245`*^9, 
+   3.847971906596834*^9}},ExpressionUUID->"b64e131e-d43a-4f1d-b583-\
+89e10d28be7e"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"Gaseous", " ", "phase"}], "Subtitle"]], "Input",
+ CellChangeTimes->{{3.8479722465197124`*^9, 
+  3.847972266459503*^9}},ExpressionUUID->"0e412909-80a3-4bc5-b665-\
+23888e813bb3"],
+
+Cell[TextData[{
+ "The state of the vapour inside the keyhole is calculated for each element \
+after having calculate the keyhole profile.\n\nThe degree of ionization as a \
+function of temperature is Saha\[CloseCurlyQuote]s equation:\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["n", "e"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "123711f9-19d3-4304-8f87-ccc2100fe483"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["n", "i"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8c98bfe5-86c0-474c-bf34-522aa6b963b1"],
+ "/",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["n", "n"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3331338a-1729-472a-8463-1102ce411e66"],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["g", "o"], ")"}], "i"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "22a28c35-ab4b-42d5-b89e-a2aee2a9031a"],
+ "/",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["g", "n"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "5c876b45-8c86-4fbe-9664-722cead01283"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"2", "\[Pi]mkT"}], 
+    SuperscriptBox["h", "3"]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a802c0d5-3247-42e0-a1e3-8eeb8981e0a3"],
+ "exp(-",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["W", "i"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "98a66194-3eda-469a-a035-a6d371750588"],
+ "/kT)\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["n", "e"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b3efc2d3-de78-4921-bfcd-cbe234b90712"],
+ ",",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["n", "i"], " ", "and", " ", 
+    SubscriptBox["n", "n"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3183b35c-b6c0-43d0-91c9-3b0a862c0e66"],
+ " are the particle densities of electrons, ions and ground state atoms \
+respectively and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["g", "0"], "is", " "}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "9e661df2-72a4-4e52-a813-a4ce4080760e"],
+ "the statistical weight. The electron mass ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["m", "e"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a92d5b60-3913-4664-83f5-fb702201c660"],
+ ", Plack\[CloseCurlyQuote]s constant \[HBar] = h/2\[Pi] and Boltzmann \
+constant k.\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["W", "i"], " ", "denotes"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ef68cefc-9aac-420d-8230-5669554fd11e"],
+ " the work for ionization.\n\nThe dominant absorption mechanism in a plasma \
+for CO2 laser radition is the mechanism of inverse Bremsstrahlung.  Linear \
+plasma absorption coefficient ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Alpha]", "iB"], ":"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "7a0af42b-c873-4d1c-a1a8-c6b2ceb9eb43"],
+ "\n\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Alpha]", "iB"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "77d4ea3d-832b-4060-b233-5e5bb78428c8"],
+ "= ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["Z", "2"], 
+     SuperscriptBox["e", "6"], 
+     SubscriptBox["n", "e"]}], 
+    RowBox[{"6", 
+     SqrtBox["3"], " ", 
+     SuperscriptBox["\[HBar]\[Omega]", "3"], 
+     SubsuperscriptBox["m", "e", "2"], 
+     SubscriptBox["c", "0"], 
+     RowBox[{
+      SubsuperscriptBox["\[Epsilon]", "0", "3"], "(", 
+      RowBox[{"1", "-", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["\[Omega]", "pe"], "/", "\[Omega]"}], ")"}], "2"]}], 
+      ")"}]}]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6a1578c3-c38b-40d0-8599-bfd35f6d636e"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"x", "(", 
+     FractionBox["m", 
+      RowBox[{"2", "\[Pi]kT"}]], ")"}], 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      RowBox[{"exp", "(", 
+       FractionBox[
+        RowBox[{"-", "\[HBar]\[Omega]"}], "kT"], ")"}]}], ")"}], 
+    OverscriptBox["g", "_"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "831a7ac1-590f-4bef-914e-bb4e26c4c393"]
+}], "Text",
+ CellChangeTimes->{{3.8479723240795927`*^9, 3.8479726500211296`*^9}, {
+  3.8479727019148674`*^9, 3.8479729132840147`*^9}, {3.8479729737879553`*^9, 
+  3.84797315218161*^9}, {3.8479734382366533`*^9, 
+  3.847973678121008*^9}},ExpressionUUID->"c4b5e48d-9f60-460c-9d86-\
+23a0563f10b9"]
+}, Open  ]]
+},
+WindowSize->{760, 832},
+WindowMargins->{{-7, Automatic}, {87, Automatic}},
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"60834fb1-97de-4435-aad5-0b253bf0a8c3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 525, 11, 100, "Text",ExpressionUUID->"25d7daf4-fa69-4be8-9bb9-b68e2852f121"],
+Cell[CellGroupData[{
+Cell[1108, 35, 220, 5, 53, "Subtitle",ExpressionUUID->"034a0e57-bf7e-4097-afad-10069a3fddb0"],
+Cell[1331, 42, 230, 5, 44, "Input",ExpressionUUID->"b0d74fd2-0259-4c38-b1b7-0604fe444a0e",
+ InitializationCell->True],
+Cell[1564, 49, 1771, 48, 128, "Input",ExpressionUUID->"44cec70e-501a-40f6-b20a-50406ba2c74f"],
+Cell[3338, 99, 217, 4, 131, "Text",ExpressionUUID->"d4758358-b51e-40e4-8ccd-367399814dc1"],
+Cell[3558, 105, 8355, 247, 547, "Text",ExpressionUUID->"595aca37-5d15-4c85-8448-34a224df5808"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11950, 357, 158, 3, 53, "Subtitle",ExpressionUUID->"63c9ce67-6e9f-45e9-b888-a7722da56e49"],
+Cell[12111, 362, 13407, 402, 890, "Text",ExpressionUUID->"b64e131e-d43a-4f1d-b583-89e10d28be7e"],
+Cell[25521, 766, 212, 5, 44, "Input",ExpressionUUID->"0e412909-80a3-4bc5-b665-23888e813bb3"],
+Cell[25736, 773, 4664, 143, 317, "Text",ExpressionUUID->"c4b5e48d-9f60-460c-9d86-23a0563f10b9"]
+}, Open  ]]
+}
+]
+*)
+
