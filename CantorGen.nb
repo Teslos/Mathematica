@@ -1,0 +1,170 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5382,        160]
+NotebookOptionsPosition[      5036,        146]
+NotebookOutlinePosition[      5428,        162]
+CellTagsIndexPosition[      5385,        159]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"3", "^", "6"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dil", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", " ", "=", " ", "1.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x_", "]"}], ":=", " ", 
+   RowBox[{"b", " ", "-", " ", 
+    RowBox[{"2", " ", "b", " ", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"x", "-", "0.5"}], "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"char", "[", "_x", "]"}], " ", ":=", " ", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"x", " ", ">", " ", "0"}], ",", " ", "1", ",", " ", "0"}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"particles", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"1.0", " ", "*", " ", 
+      RowBox[{"q", "/", " ", 
+       RowBox[{"(", 
+        RowBox[{"dil", "*", "num"}], ")"}]}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", "1", ",", 
+       RowBox[{"dil", "*", "num"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"copy", " ", "=", " ", "particles"}], ";"}], "\[IndentingNewLine]", 
+
+ RowBox[{
+  RowBox[{
+   RowBox[{"Do", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{"char", ",", " ", "particles"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Axes", "->", "None"}], ",", " ", 
+        RowBox[{"PlotRange", "->", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "0.1"}], ",", "10"}], "}"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"copy", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{"f", ",", "copy"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"part", " ", "=", " ", 
+          RowBox[{"copy", "[", 
+           RowBox[{"[", "s", "]"}], "]"}]}], ";", " ", "\[IndentingNewLine]", 
+         
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"part", " ", "<", " ", "0"}], ")"}], " ", "||", " ", 
+            RowBox[{"(", 
+             RowBox[{"part", " ", ">", " ", "1"}], ")"}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"particles", "[", 
+             RowBox[{"[", "s", "]"}], "]"}], " ", "==", " ", "0"}]}], "]"}]}],
+         ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "1", ",", " ", 
+          RowBox[{"Length", "[", "particles", "]"}]}], "}"}]}], "]"}]}], ",", 
+     
+     RowBox[{"{", 
+      RowBox[{"q", ",", "0", ",", "4"}], "}"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Cantor", " ", "measure", " ", "function"}], ",", " ", 
+    RowBox[{
+    "simply", " ", "returns", " ", "1", " ", "iff", " ", "the", " ", 
+     "arguments", " ", "ternary", " ", "expansion", " ", "has", " ", "no", 
+     " ", "\"\<1\>\"", "s"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"cantor", "[", "m_", "]"}], ":=", " ", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"e", ",", "dig"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"e", " ", "=", " ", "m"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"e", " ", ">", " ", "0"}], ",", " ", 
+        RowBox[{
+         RowBox[{"dig", " ", "=", " ", 
+          RowBox[{"Mod", "[", 
+           RowBox[{"e", ",", "3"}], "]"}]}], ";", " ", "\[IndentingNewLine]", 
+         
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"dig", " ", "==", " ", "1"}], ",", " ", 
+           RowBox[{"Return", "[", "0", "]"}]}], "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "1", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"cantor", "[", 
+     RowBox[{"q", "-", "1"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"q", ",", "1", ",", 
+      RowBox[{"3", "^", "6"}]}], "}"}]}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9062933821634617`*^9, 
+  3.906293812179978*^9}},ExpressionUUID->"512e1cc9-8785-4266-ad89-\
+5c149d028caf"]
+},
+WindowSize->{808, 709},
+WindowMargins->{{92, Automatic}, {0, Automatic}},
+FrontEndVersion->"13.1 for Mac OS X x86 (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f4a872a3-0889-4fab-9c8a-2588488d4fec"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4474, 124, 556, "Input",ExpressionUUID->"512e1cc9-8785-4266-ad89-5c149d028caf"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
