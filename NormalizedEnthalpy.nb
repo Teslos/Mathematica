@@ -1,0 +1,110 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3697,        102]
+NotebookOptionsPosition[      3025,         83]
+NotebookOutlinePosition[      3435,         99]
+CellTagsIndexPosition[      3392,         96]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Steel parameters for the Normalized enthalpy:", "Text",
+ CellChangeTimes->{{3.919241953012946*^9, 
+  3.919241971288096*^9}},ExpressionUUID->"5cfa92dc-067a-4666-8029-\
+82e2d00f4e40"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Alpha]", " ", "=", " ", "0.44"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P", " ", "=", " ", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Rho]", " ", "=", " ", "7900"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Tm", " ", "=", " ", "1640"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Cp", " ", "=", " ", "490"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"L", " ", "=", " ", "260000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Omega]", " ", "=", 
+   RowBox[{"85", " ", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "6"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"v", " ", "=", "0.6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[ScriptCapitalD]", " ", "=", " ", 
+   RowBox[{"3.5", " ", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "6"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CapitalDelta]T", " ", "=", " ", 
+   RowBox[{"Tm", "-", "298"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.9192419774733477`*^9, 3.919242060597865*^9}, {
+  3.919242115214792*^9, 3.9192421712530913`*^9}, {3.919242286033233*^9, 
+  3.9192423160642366`*^9}, {3.919242456060693*^9, 3.919242456539587*^9}, {
+  3.9192425284622726`*^9, 3.919242528899249*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"65819b91-960b-4fde-a079-8e32e593e8c5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[CapitalDelta]H", "=", 
+  FractionBox[
+   RowBox[{"\[Alpha]", " ", "P"}], 
+   RowBox[{"\[Rho]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Cp", " ", "\[CapitalDelta]T"}], "+", "L"}], ")"}], " ", 
+    RowBox[{"Sqrt", "[", 
+     RowBox[{"\[Pi]", " ", 
+      SuperscriptBox["\[Omega]", "3"], "v", " ", "\[ScriptCapitalD]"}], 
+     "]"}]}]]}]], "Input",
+ CellChangeTimes->{{3.9192421814445796`*^9, 3.919242278299481*^9}, 
+   3.9192423267295294`*^9, {3.9192425087406406`*^9, 3.9192425188661675`*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"f22b049c-7ab8-428f-bac9-cf3a3e304a70"],
+
+Cell[BoxData["12.06225944299365`"], "Output",
+ CellChangeTimes->{{3.9192423238817463`*^9, 3.919242328438854*^9}, 
+   3.919242473486991*^9, {3.919242519505039*^9, 3.9192425338293114`*^9}},
+ CellLabel->"Out[35]=",ExpressionUUID->"a29218ee-54b6-4a8d-ab90-bd2e554f121c"]
+}, Open  ]]
+},
+WindowSize->{570.75, 523.5},
+WindowMargins->{{17.25, Automatic}, {Automatic, -583.5}},
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7aee26c3-2c55-46af-a419-4d39f7759d00"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 187, 3, 35, "Text",ExpressionUUID->"5cfa92dc-067a-4666-8029-82e2d00f4e40"],
+Cell[748, 25, 1363, 32, 200, "Input",ExpressionUUID->"65819b91-960b-4fde-a079-8e32e593e8c5"],
+Cell[CellGroupData[{
+Cell[2136, 61, 604, 14, 51, "Input",ExpressionUUID->"f22b049c-7ab8-428f-bac9-cf3a3e304a70"],
+Cell[2743, 77, 266, 3, 55, "Output",ExpressionUUID->"a29218ee-54b6-4a8d-ab90-bd2e554f121c"]
+}, Open  ]]
+}
+]
+*)
+
